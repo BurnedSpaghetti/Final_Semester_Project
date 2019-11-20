@@ -1,0 +1,26 @@
+
+body{
+    background: url("./images/index1.png") fixed no-repeat center ;
+    
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+  }
+
+  @media (min-width: 450px) {   
+    .dickcontainer{
+        width:393px;
+        margin-left: 1150px;
+        margin-top: 250px;
+        padding: 20px 90px 90px 90px;
+        left: 50%;
+        right: 50%;
+        border: 5px;
+        box-sizing: content-box;
+    }
+}
+
+h1{
+  padding: 0px 0px 25px;
+}
