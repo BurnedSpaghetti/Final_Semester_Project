@@ -1,13 +1,9 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 import "./LoginPage.css";
-import "./SignUpPage";
 
-class LoginPage extends React.Component {
-  onSubmit = () => {
-    return <Redirect push to="/SignUpPage" />;
-  };
-
+export default class LoginPage extends React.Component {
   render() {
     return (
       <html>
@@ -83,30 +79,21 @@ class LoginPage extends React.Component {
                   Remember Me
                 </label>
               </div>
-
-              <button
+              <Link
                 class="btn btn-success btn-block"
-                type="submit"
                 style={{ backgroundColor: "#339999", borderColor: "#f5ce38" }}
               >
                 <i class="fas fa-sign-in-alt"></i> Sign in
-              </button>
-              <a href="#" id="forgot_pswd">
-                Forgot password?
-              </a>
-
-              <button
-                class="btn btn-primary btn-block"
-                type="button"
-                id="signup"
-                style={{
-                  backgroundColor: "#f5ce38",
-                  border: "2px solid #339999"
-                }}
-                onClick={this.onSubmit}
+              </Link>
+              <Link
+                to="/SignUpPage"
+                class="btn btn-success btn-block"
+                style={{ backgroundColor: "#339999", borderColor: "#f5ce38" }}
               >
-                <i class="fas fa-user-plus"></i>Sign up
-              </button>
+                <i class="fas fa-sign-in-alt" /> Sign Up
+              </Link>
+
+              <Link>Forgot password?</Link>
             </form>
           </div>
         </body>
@@ -114,5 +101,3 @@ class LoginPage extends React.Component {
     );
   }
 }
-
-export default LoginPage;
