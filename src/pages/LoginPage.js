@@ -9,23 +9,10 @@ export default class LoginPage extends React.Component {
       <html>
         <head>
           <meta charset="UTF-8" />
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0"
-          />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
           <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-          <link
-            rel="stylesheet"
-            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-            crossorigin="anonymous"
-          />
-          <link
-            rel="stylesheet"
-            href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
-            integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
-            crossorigin="anonymous"
-          />
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"crossorigin="anonymous"/>
+          <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"/>
           <link rel="stylesheet" href="/style.css" />
           <title>Bootstrap 4 Login/Register Form</title>
         </head>
@@ -39,10 +26,8 @@ export default class LoginPage extends React.Component {
             }}
           >
             <form>
-              <h1
-                class="h3 mb-3 font-weight-normal"
-                style={{ color: "white", textAlign: "center" }}
-              >
+              <h1 class="h3 mb-3 font-weight-normal"
+                style={{ color: "white", textAlign: "center" }}>
                 {" "}
                 Sign in
               </h1>
@@ -54,15 +39,13 @@ export default class LoginPage extends React.Component {
                   class="form-control"
                   placeholder="Email address"
                   required=""
-                  autofocus=""
-                />
+                  autofocus=""/>
                 <input
                   type="password"
                   id="inputPassword"
                   class="form-control"
                   placeholder="Password"
-                  required=""
-                />
+                  required=""/>
               </div>
 
               <div class="form-check mb-2">
@@ -88,10 +71,9 @@ export default class LoginPage extends React.Component {
               <Link
                 to="/SignUpPage"
                 class="btn btn-success btn-block"
-                style={{ backgroundColor: "#339999", borderColor: "#f5ce38" }}
+                style={{ backgroundColor: "#f5ce38", border: "2px solid #339999" }}
               >
-                <i class="fas fa-sign-in-alt" /> Sign Up
-              </Link>
+                <i class="fas fa-sign-in-alt" /> Register </Link>
 
               <Link>Forgot password?</Link>
             </form>

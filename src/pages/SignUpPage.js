@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 
 export default class Signup extends React.Component {
@@ -28,77 +29,7 @@ export default class Signup extends React.Component {
           <title>Bootstrap 4 Login/Register Form</title>
         </head>
 
-        <body>
-          <form>
-            <h1
-              class="h3 font-weight-normal"
-              style={{ color: "white", textAlign: "center" }}
-            >
-              {" "}
-              Sign up
-            </h1>
-            <div class="form-group">
-              <input
-                type="email"
-                id="inputEmail"
-                class="form-control"
-                placeholder="Email address"
-                required=""
-                autofocus=""
-              />
-              <input
-                type="password"
-                id="inputPassword"
-                class="form-control"
-                placeholder="Password"
-                required=""
-              />
-            </div>
-            <div class="form-check mb-2">
-              <input
-                type="checkbox"
-                class="form-check-input"
-                id="autoSizingCheck"
-              />
-              <label
-                class="form-check-label"
-                for="autoSizingCheck"
-                style={{ color: "white" }}
-              >
-                Remember Me
-              </label>
-            </div>
-            <button
-              class="btn btn-success btn-block"
-              type="submit"
-              style={{ backgroundColor: "#339999", borderColor: "#f5ce38" }}
-            >
-              <i class="fas fa-sign-in-alt"></i> Sign in
-            </button>
-            <a href="#" id="forgot_pswd">
-              Forgot password?
-            </a>
-            <button
-              class="btn btn-primary btn-block"
-              type="button"
-              id="signup"
-              style={{
-                backgroundColor: "#f5ce38",
-                border: "2px solid #339999"
-              }}
-            >
-              <i class="fas fa-user-plus"></i>Sign up
-            </button>
-          </form>
-          */
-        </body>
-      </html>
-    );
-  }
-}
-
-/* Karen's Form
-          <div
+        <div
             class="dickcontainer"
             style={{
               backgroundColor: "#4d568b",
@@ -109,21 +40,18 @@ export default class Signup extends React.Component {
             <form class="form-horizontal" action="" method="POST">
               <fieldset>
                 <div id="legend">
-                  <legend class="">Register</legend>
+                  <legend class="" style={{ color: "white"}}>Register</legend>
                 </div>
                 <div class="control-group">
-                  <label class="control-label" for="username">
-                    Username
-                  </label>
+                  <label class="control-label" for="username" style={{ color: "white"}}> Username</label>
                   <div class="controls">
                     <input
                       type="text"
                       id="username"
                       name="username"
                       placeholder=""
-                      class="input-xlarge"
-                    />
-                    <p class="help-block">
+                      class="input-xlarge"/>
+                    <p class="help-block" style={{ color: "white"}}>
                       Username can contain any letters or numbers, without
                       spaces
                     </p>
@@ -131,7 +59,7 @@ export default class Signup extends React.Component {
                 </div>
 
                 <div class="control-group">
-                  <label class="control-label" for="email">
+                  <label class="control-label" for="email" style={{ color: "white"}}>
                     E-mail
                   </label>
                   <div class="controls">
@@ -142,12 +70,12 @@ export default class Signup extends React.Component {
                       placeholder=""
                       class="input-xlarge"
                     />
-                    <p class="help-block">Please provide your E-mail</p>
+                    <p class="help-block" style={{ color: "white"}}>Please provide your E-mail</p>
                   </div>
                 </div>
 
                 <div class="control-group">
-                  <label class="control-label" for="password">
+                  <label class="control-label" for="password" style={{ color: "white"}}>
                     Password
                   </label>
                   <div class="controls">
@@ -158,14 +86,14 @@ export default class Signup extends React.Component {
                       placeholder=""
                       class="input-xlarge"
                     />
-                    <p class="help-block">
-                      Password should be at least 4 characters
+                    <p class="help-block" style={{ color: "white"}}>
+                      Password should be at least 8 characters
                     </p>
                   </div>
                 </div>
 
                 <div class="control-group">
-                  <label class="control-label" for="password_confirm">
+                  <label class="control-label" for="password_confirm" style={{ color: "white"}}>
                     Password (Confirm)
                   </label>
                   <div class="controls">
@@ -176,16 +104,27 @@ export default class Signup extends React.Component {
                       placeholder=""
                       class="input-xlarge"
                     />
-                    <p class="help-block">Please confirm password</p>
+                    <p class="help-block" style={{ color: "white"}}>Please confirm password</p>
                   </div>
                 </div>
 
                 <div class="control-group">
                   <div class="controls">
-                    <button class="btn btn-success">Register</button>
+                    <button class="btn btn-success btn-block" style={{ backgroundColor: "#339999", borderColor: "#f5ce38" }}>Register</button>
+                  
+                  <Link
+                    to="/"
+                    class="btn btn-success btn-block"
+                    style={{ backgroundColor: "#f5ce38", border: "2px solid #339999" }}>
+                    <i class="fas fa-sign-in-alt" /> Log in
+                  </Link>
                   </div>
                 </div>
               </fieldset>
               </form>
               </div>
-*/
+      </html>
+    );
+  }
+}
+
