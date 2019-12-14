@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Redirect } from "react-router-dom";
+import '../App.css';
 
 export default class Signup extends React.Component {
   render() {
@@ -30,7 +31,7 @@ export default class Signup extends React.Component {
         </head>
 
         <div
-            class="dickcontainer"
+            className="page-layout"
             style={{
               backgroundColor: "#4d568b",
               borderColor: "rgb(245, 206, 56)",
@@ -62,7 +63,7 @@ export default class Signup extends React.Component {
                   <label class="control-label" for="email" style={{ color: "white"}}>
                     E-mail
                   </label>
-                  <div class="controls">
+                  <div class="control-group">
                     <input
                       type="text"
                       id="email"
@@ -111,7 +112,9 @@ export default class Signup extends React.Component {
                 <div class="control-group">
                   <div class="controls">
                     <button class="btn btn-success btn-block" style={{ backgroundColor: "#339999", borderColor: "#f5ce38" }}>Register</button>
-                  
+                    <br/>
+                    <Link>Already have an account?</Link>
+
                   <Link
                     to="/"
                     class="btn btn-success btn-block"

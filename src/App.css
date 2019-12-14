@@ -22,3 +22,31 @@
 .App-link {
   color: #09d3ac;
 }
+
+legend {
+  text-align: center;
+}
+
+body {
+  background: url("C:\Users\doppo\gamerSweet\ProjectX\src\pages\images\index1.png") fixed no-repeat center;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+
+.page-layout {
+  transform: translate(-50%, -50%);
+  position: fixed;
+  width: 393px;
+  left: 50%;
+  top: 50%;
+  padding: 20px 90px 90px 90px;
+  border: 5px;
+  box-sizing: content-box;
+}
+
+h1 {
+  padding: 0px 0px 25px;
+}
