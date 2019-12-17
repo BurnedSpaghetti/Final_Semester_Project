@@ -3,6 +3,8 @@ const bcrypt = require('bcryptjs');
 const Schema = mongoose.Schema; 
 const saltRounds = 10;
 
+const CHAR_LIMIT = 8;
+
 // creating gamer schema & model 
 const Gamer = new Schema({
     username: {
@@ -32,6 +34,12 @@ const Gamer = new Schema({
     }
 });
 
+Gamer.methods.isPasswordLong = function(value) {
+    if (value.length < CHAR_LIMIT){
+        throw new Error('Password is too short');
+    }
+},
+
 Gamer.pre('save', function(next) {
     var user = this;
 
@@ -48,6 +56,12 @@ Gamer.pre('save', function(next) {
         });
     });
 });
+
+Gamer.methods.comparePasswords = function (password, passwordConf) {
+    bcrypt.compare(password, this.passwordConf, function(err,isMatch){
+        if(err) return 
+    });
+}
 
 Gamer.methods.comparePassword = function(userPassword, cb) {
     bcrypt.compare(userPassword, this.password, function(err, isMatch) {

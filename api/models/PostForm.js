@@ -1,9 +1,10 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema; 
 
+// Schema named Post
 const PostForm = new Schema ({
     titleOfPost: String,
-    nameOfUser: {
+    ProfileName: {
         type: String,
         ref: 'Gamer',
         required: true,
@@ -12,9 +13,9 @@ const PostForm = new Schema ({
     dislike: Number,
     comments: {
         text: String,
-        lowercase: true,
-        uppercase: true,
-    }   
+        ref: 'Text',
+    },
+    DateofPost: Date,   
 });
 
 module.exports = mongoose.model('Post', PostForm);

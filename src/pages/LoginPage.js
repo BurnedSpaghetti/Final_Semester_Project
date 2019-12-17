@@ -53,13 +53,7 @@ export default class LoginPage extends React.Component {
                   class="form-check-input"
                   id="autoSizingCheck"
                 />
-                <label
-                  class="form-check-label"
-                  for="autoSizingCheck"
-                  style={{ color: "white" }}
-                >
-                  Remember Me
-                </label>
+                
               </div>
               <Link
                 class="btn btn-success btn-block"

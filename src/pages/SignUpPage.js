@@ -3,8 +3,103 @@ import { Link } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 import '../App.css';
 
-export default class Signup extends React.Component {
+const CHAR_LIMIT = 8;
+
+ class Signup extends React.Component {
+    state = {
+      error: false,
+      errorMessage:'',
+      success:false,
+      firstName: '',
+      lastName: '',
+      email: '',
+      username: '',
+      firstPassword: '',
+      secondPassword: '',
+    }
+
+    fieldChanged = (name) => {
+      return (event) => {
+        let { value } = event.target;
+        this.setState({ [name]: value});
+      }
+    }
+
+    validUserCredentials = () => {
+      if (
+        this.state.firstName === '' || 
+        this.state.lastName === '' ||
+        this.state.email === '' || 
+        this.state.username === '' || 
+        this.state.firstPassword === '' ||
+        this.state.secondPassword === ''
+      ) {
+        this.setState({
+          error: true,
+          errorMessage: 'All fields are required'
+        });
+        return false;
+      }
+      if (this.state.firstPassword !== this.state.secondPassword) {
+        this.setState({
+          error: true,
+          errorMessage: 'Passwords do not match'
+        });
+      }
+      if (this.state.firstPassword.length < CHAR_LIMIT) {
+        this.setState({
+          error:true,
+          errorMessage: 'Password must be at least 8 characters'
+        });
+        return false;
+      }
+      return true;
+    }
+
+    signUpUser = (event) => {
+      if(this.validUserCredentials()) {
+        fetch("/api/auth/signup", {
+          method: 'POST',
+          credentials: 'include',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            firstName: this.state.firstName,
+            lastName: this.state.lastName, 
+            email: this.state.email,
+            username: this.state.username,
+            password: this.state.firstPassword,
+          })
+        })
+        .then(res => {
+          if(res.ok) {
+            return res.json();
+          }
+        })
+        .then(user=> {
+          this.setState({
+            success: true,
+          });
+        })
+        .catch(error => {
+          this.setState({
+            error: true,
+            errorMessage: 'There was an error signing you up'
+          });
+        });
+      }
+    }
   render() {
+        if (this.state.success) return <Redirect to="/login"/>;
+        let errorMessage = '';
+        if(this.state.error) {
+          errorMessage = (
+            <div className = "alert alert-danger">
+              {this.state.errorMessage}
+            </div>
+          );
+        }
     return (
       <html>
         <head>
@@ -43,21 +138,6 @@ export default class Signup extends React.Component {
                 <div id="legend">
                   <legend class="" style={{ color: "white"}}>Register</legend>
                 </div>
-                <div class="control-group">
-                  <label class="control-label" for="username" style={{ color: "white"}}> Username</label>
-                  <div class="controls">
-                    <input
-                      type="text"
-                      id="username"
-                      name="username"
-                      placeholder=""
-                      class="input-xlarge"/>
-                    <p class="help-block" style={{ color: "white"}}>
-                      Username can contain any letters or numbers, without
-                      spaces
-                    </p>
-                  </div>
-                </div>
 
                 <div class="control-group">
                   <label class="control-label" for="email" style={{ color: "white"}}>
@@ -66,12 +146,64 @@ export default class Signup extends React.Component {
                   <div class="control-group">
                     <input
                       type="text"
-                      id="email"
+                      value={this.state.email}
                       name="email"
                       placeholder=""
-                      class="input-xlarge"
+                      className="input-xlarge"
+                      onChange={this.fieldChanged('email')}
                     />
-                    <p class="help-block" style={{ color: "white"}}>Please provide your E-mail</p>
+                    <p class="help-block" style={{ color: "white"}}></p>
+                  </div>
+                </div>
+
+                <div class="control-group">
+                  <label class="control-label" for="password_confirm" style={{ color: "white"}}>
+                    First Name
+                  </label>
+                  <div class="controls">
+                    <input
+                      type="text"
+                      value = {this.state.firstName}
+                      name="password_confirm"
+                      placeholder=""
+                      className="input-xlarge"
+                      onChange={this.fieldChanged('firstName')}
+                    />
+                    <p class="help-block" style={{ color: "white"}}></p>
+                  </div>
+                </div>
+
+                <div class="control-group">
+                  <label class="control-label" for="password_confirm" style={{ color: "white"}}>
+                    Last Name
+                  </label>
+                  <div class="controls">
+                    <input
+                      type="text"
+                      value={this.state.lastName}
+                      name="first_name"
+                      placeholder=""
+                      className="input-xlarge"
+                      onChange={this.fieldChanged('lastName')}
+                    />
+                    <p class="help-block" style={{ color: "white"}}></p>
+                  </div>
+                </div>
+
+                <div class="control-group">
+                  <label class="control-label" for="username" style={{ color: "white"}}> Username</label>
+                  <div class="controls">
+                    <input
+                      type="text"
+                      value={this.state.username}
+                      name="username"
+                      placeholder=""
+                      class="input-xlarge"
+                      onChange={this.fieldChanged('username')}
+                      />
+                    <p class="help-block" style={{ color: "white"}}>
+                      
+                    </p>
                   </div>
                 </div>
 
@@ -82,30 +214,32 @@ export default class Signup extends React.Component {
                   <div class="controls">
                     <input
                       type="password"
-                      id="password"
+                      value={this.state.firstPassword}
                       name="password"
                       placeholder=""
-                      class="input-xlarge"
+                      className="input-xlarge"
+                      onChange={this.fieldChanged('firstPassword')}
                     />
                     <p class="help-block" style={{ color: "white"}}>
-                      Password should be at least 8 characters
+                    Password should be at least 8 characters
                     </p>
                   </div>
                 </div>
 
                 <div class="control-group">
                   <label class="control-label" for="password_confirm" style={{ color: "white"}}>
-                    Password (Confirm)
+                    Password (Re-enter password)
                   </label>
                   <div class="controls">
                     <input
                       type="password"
-                      id="password_confirm"
+                      value={this.state.secondPassword}
                       name="password_confirm"
                       placeholder=""
                       class="input-xlarge"
+                      onChange={this.fieldChanged('secondPassword')}
                     />
-                    <p class="help-block" style={{ color: "white"}}>Please confirm password</p>
+                    <p class="help-block" style={{ color: "white"}}></p>
                   </div>
                 </div>
 
@@ -131,3 +265,4 @@ export default class Signup extends React.Component {
   }
 }
 
+export default Signup;
